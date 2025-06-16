@@ -94,6 +94,9 @@ jobs:
                
           echo "dockerconfigjson=$SECRET_JSON" >> $GITHUB_OUTPUT
 
+      - name: Kubelogin plugin authentication
+        run: kubelogin convert-kubeconfig -l azurecli
+
       - name: Deploy Helm chart
         run: |
           helm upgrade --install flask-app ./helm \
@@ -158,6 +161,9 @@ jobs:
                -o json | jq -r '.data.".dockerconfigjson"')
                
           echo "dockerconfigjson=$SECRET_JSON" >> $GITHUB_OUTPUT
+
+      - name: Kubelogin plugin authentication
+        run: kubelogin convert-kubeconfig -l azurecli
 
       - name: Deploy Helm chart
         run: |
@@ -225,6 +231,9 @@ jobs:
                
           echo "dockerconfigjson=$SECRET_JSON" >> $GITHUB_OUTPUT
 
+      - name: Kubelogin plugin authentication
+        run: kubelogin convert-kubeconfig -l azurecli
+        
       - name: Deploy Helm chart
         run: |
           IMAGE_TAG="$VERSION"-"$SHORT_COMMIT_ID"
