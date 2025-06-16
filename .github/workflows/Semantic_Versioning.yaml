@@ -84,6 +84,9 @@ jobs:
                
           echo "dockerconfigjson=$SECRET_JSON" >> $GITHUB_OUTPUT
 
+      - name: Kubelogin plugin authentication
+        run: kubelogin convert-kubeconfig -l azurecli
+
       - name: Deploy Helm chart
         run: |
           #mkdir -p ~/.kube
@@ -146,6 +149,9 @@ jobs:
                
           echo "dockerconfigjson=$SECRET_JSON" >> $GITHUB_OUTPUT
 
+      - name: Kubelogin plugin authentication
+        run: kubelogin convert-kubeconfig -l azurecli
+        
       - name: Deploy Helm chart
         run: |
           IMAGE_TAG="$VERSION"
@@ -208,6 +214,9 @@ jobs:
                
           echo "dockerconfigjson=$SECRET_JSON" >> $GITHUB_OUTPUT
 
+      - name: Kubelogin plugin authentication
+        run: kubelogin convert-kubeconfig -l azurecli
+        
       - name: Deploy Helm chart
         run: |
           IMAGE_TAG="$VERSION"
